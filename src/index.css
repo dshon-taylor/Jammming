@@ -1,0 +1,371 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  --clr-primary: #021111;
+  --clr-accent: #29D6D8;
+  --clr-text-primary: #fff;
+  --clr-text-secondary: #94C4C4;
+  --border-radius: 1.5rem;
+  --transition: all 0.3s ease-in-out;
+}
+p {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+body {
+  font-family: "League Spartan", Helvetica, sans-serif;
+  color: #fff;
+  background-color: #021111
+}
+video#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #021111;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#overlay {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(2, 17, 17,.9);
+}
+
+.clr-accent {
+  color: var(--clr-accent);
+}
+
+h1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 3rem;
+  text-align: center;
+  margin: 0;
+}
+h2 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  margin: 0;
+  margin-bottom: 8px;
+}
+h3 {
+  color: var(--clr-text-primary);
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+header {
+  padding: 2rem;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 120px - 50px); /* Screen height - Header height - bottom margin height*/
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+#songs-container {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+#results, #playlist {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 3rem;
+  overflow: auto;
+  padding-right: .75rem;
+  mask-image: linear-gradient(to bottom, #000, #000 calc(100% - 4rem), transparent);
+}
+
+#results::-webkit-scrollbar,
+#playlist::-webkit-scrollbar {
+  width: 5px;
+  background: transparent;
+}
+#results::-webkit-scrollbar-thumb,
+#playlist::-webkit-scrollbar-thumb {
+  background: var(--clr-accent);
+  border-radius: 10px;
+}
+#results::-webkit-scrollbar-track,
+#playlist::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  height: calc(100vh - 120px - 50px); /* Screen height - Header height - bottom margin height*/
+  margin: 0 auto;
+  background: rgba(255, 255, 255,.06);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+}
+
+.song-card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: stretch;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 4rem 1rem 1rem;
+  gap: 1rem;
+  color: var(--clr-text-secondary);
+  border-top: 1px solid var(--clr-primary);
+  background-color: rgba(255,255,255,0);
+}
+
+.song-card:hover {
+  background-color: rgba(255,255,255,.02);
+}
+
+.song-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.song-card .song-info {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  height: 100%;
+  width: 100%;
+}
+
+form {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+input[type="search"] {
+  width: 100%;
+  padding: 4px 16px;
+  border: none;
+  border-radius: 100vw;
+  font-family: "League Spartan", Helvetica, sans-serif;
+}
+
+#search-input:focus,
+#search-input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--clr-accent);
+}
+
+#playlist-container {
+  position: relative;
+}
+
+#playlist {
+  width: 100%;
+  margin-bottom: 3.5rem;
+  overflow-x: hidden;
+}
+
+#playlist-container .song-card {
+  padding: .5rem;
+}
+
+#playlist-container .song-card img {
+  width: 40px;
+  height: 40px;
+}
+
+#playlist-container .song-card h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+#playlist-container .song-card p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.add-to-playlist::before,
+.remove-from-playlist::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url(./assets/icon-add.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.remove-from-playlist,
+.add-to-playlist {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 60px;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.add-to-playlist {
+  width: calc(4rem + 20px);
+  background: linear-gradient(to right, transparent 50%, rgba(41, 214, 216, 0.5) 50%);
+  background-size: 200%;
+  background-position: 0%;
+  transition: background-position .2s ease-in;
+}
+
+.add-to-playlist:hover {
+  background-position: 100%;
+  transition: background-position .2s ease-out;
+}
+
+.selected .add-to-playlist::before {
+  background-image: url(./assets/icon-check.png);
+}
+
+.selected .add-to-playlist {
+  background: linear-gradient(to right, transparent 50%, rgba(41, 214, 216, 1) 50%);
+  background-size: 200%;
+  background-position: 100%;
+}
+
+.remove-from-playlist::before {
+  content: "";
+  background-image: url(./assets/icon-remove.png);
+  right: 1rem;
+  transform: translate(0,-50%);
+  transition: transform .2s ease-out .2s;
+}
+
+.remove-from-playlist::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  background: url(./assets/icon-delete.png), #7B3E3E;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 20px, contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateX(100%);
+  transition: transform .2s ease-in 0s;
+}
+
+.remove-from-playlist:hover::before {
+  transform: translate(100%, -50%);
+  transition: transform .1s ease-in;
+}
+
+.remove-from-playlist:hover::after {
+  transform: translateX(0);
+  transition: transform .2s ease-out .1s;
+}
+
+#playlist-container button {
+  display: block;
+  background: var(--clr-accent);
+  color: white;
+  border-radius: 100vw;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--clr-accent);
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition: all 0.3s ease-in-out;
+}
+
+#playlist-container button:hover {
+  background:rgba(41, 214, 216, .05);
+  border: 1px solid var(--clr-accent);
+  box-shadow:
+    0 0 5px 0px var(--clr-accent),
+    -3px 3px 5px 0px rgba(0,0,0,0.5);
+}
+
+.remove-animation {
+  animation: forwards 250ms removeSong;
+}
+
+.remove-entry-animation {
+  animation: forwards 250ms removeSongEntry 250ms;
+}
+
+@keyframes removeSong {
+  100% {
+    right: 0;
+    left: auto;
+    width: 100%;
+  }
+}
+
+@keyframes removeSongEntry {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
