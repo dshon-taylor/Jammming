@@ -10,10 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="bg">
-      <video id="background-video" loop autoplay muted><source src="./src/assets/bg-video.mp4"></source></video>
-      <div id="overlay"></div>
-    </div>
     <header>
         <h1>Ja<span class="clr-accent">mmm</span>ing</h1>
         <!-- <p>Make a Playlist. Made with React.</p> -->
@@ -165,9 +161,8 @@
           <button id="save-playlist">Addd to Spotify</button>
         </section>
       </div>
-      
     </main>
-    <!-- <div id="root"></div> -->
+    <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
       const playlistSongs = document.getElementById("playlist").getElementsByClassName("song-card");
