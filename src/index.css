@@ -243,26 +243,6 @@ input[type="search"] {
   overflow-x: hidden;
 }
 
-#playlist-container .song-card {
-  padding: .5rem;
-}
-
-#playlist-container .song-card img {
-  width: 40px;
-  height: 40px;
-}
-
-#playlist-container .song-card h3 {
-  font-size: 1rem;
-  margin: 0;
-}
-
-#playlist-container .song-card p {
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-
 #playlist-container button {
   display: block;
   background: var(--clr-accent);
