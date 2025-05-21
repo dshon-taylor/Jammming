@@ -124,89 +124,6 @@ section {
   box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
 }
 
-.song-card {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: stretch;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 1rem 4rem 1rem 1rem;
-  gap: 1rem;
-  color: var(--clr-text-secondary);
-  border-top: 1px solid var(--clr-primary);
-  background-color: rgba(255,255,255,0);
-}
-
-.song-card:hover {
-  background-color: rgba(255,255,255,.02);
-}
-
-.song-card img {
-  width: 80px;
-  height: 80px;
-  border-radius: 4px;
-  object-fit: cover;
-}
-
-.song-card .song-info {
-  display: grid;
-  align-content: center;
-  justify-items: start;
-  height: 100%;
-  width: 100%;
-}
-
-form {
-  margin-bottom: 1rem;
-  width: 100%;
-}
-
-input[type="search"] {
-  width: 100%;
-  padding: 4px 16px;
-  border: none;
-  border-radius: 100vw;
-  font-family: "League Spartan", Helvetica, sans-serif;
-}
-
-#search-input:focus,
-#search-input:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--clr-accent);
-}
-
-#playlist-container {
-  position: relative;
-}
-
-#playlist {
-  width: 100%;
-  margin-bottom: 3.5rem;
-  overflow-x: hidden;
-}
-
-#playlist-container .song-card {
-  padding: .5rem;
-}
-
-#playlist-container .song-card img {
-  width: 40px;
-  height: 40px;
-}
-
-#playlist-container .song-card h3 {
-  font-size: 1rem;
-  margin: 0;
-}
-
-#playlist-container .song-card p {
-  font-size: 0.9rem;
-  margin: 0;
-}
-
 .add-to-playlist::before,
 .remove-from-playlist::before {
   content: "";
@@ -234,6 +151,8 @@ input[type="search"] {
   height: 100%;
   overflow: hidden;
   cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 .add-to-playlist {
@@ -294,6 +213,55 @@ input[type="search"] {
   transform: translateX(0);
   transition: transform .2s ease-out .1s;
 }
+
+form {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+input[type="search"] {
+  width: 100%;
+  padding: 4px 16px;
+  border: none;
+  border-radius: 100vw;
+  font-family: "League Spartan", Helvetica, sans-serif;
+}
+
+#search-input:focus,
+#search-input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--clr-accent);
+}
+
+#playlist-container {
+  position: relative;
+}
+
+#playlist {
+  width: 100%;
+  margin-bottom: 3.5rem;
+  overflow-x: hidden;
+}
+
+#playlist-container .song-card {
+  padding: .5rem;
+}
+
+#playlist-container .song-card img {
+  width: 40px;
+  height: 40px;
+}
+
+#playlist-container .song-card h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+#playlist-container .song-card p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 
 #playlist-container button {
   display: block;
