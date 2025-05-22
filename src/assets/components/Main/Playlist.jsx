@@ -1,6 +1,7 @@
 import React from 'react';
 import mockData from '../../mockData.json';
 import SongCard from './SongCard';
+import Button from './Button';
 
 
 function Playlist() {
@@ -20,6 +21,7 @@ function Playlist() {
                     />
                 ))}
             </div>
+            <Button text="Addd to Spotify" />
         </section>
     );
 }

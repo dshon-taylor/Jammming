@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import mockData from '../../mockData.json';
 import SongCard from './SongCard';
+import SearchBar from './SearchBar';
 
 function TrackSelector() {
     const [songs, setSongs] = useState(mockData);
@@ -20,15 +21,7 @@ function TrackSelector() {
         <section id="songs-container">
             <div>
                 <h2>Search for your Fa<span className="clr-accent">vvv</span>'s</h2>
-                <form id="search-form" onSubmit={e => e.preventDefault()}>
-                    <input
-                        type="search"
-                        id="search-input"
-                        placeholder="Enter a song or artist name..."
-                        value={searchInput}
-                        onChange={handleSearch}
-                    />
-                </form>
+                <SearchBar onSearch={handleSearch} />
             </div>
             <div id="results">
                 {songs.map((song, index) => (
