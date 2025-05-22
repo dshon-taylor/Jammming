@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './SearchBar.module.css';
+import searchIcon from '../../icon-search.svg';
 
 
 function SearchBar({ onSearch, searchValue }) {
@@ -12,6 +13,10 @@ function SearchBar({ onSearch, searchValue }) {
                 onChange={onSearch}
                 className={styles.searchInput}
             />
+            <button type="submit" className={styles.searchButton}>
+                
+                <img src={searchIcon} alt="search" className={styles.searchIcon} />
+            </button>
         </form>
     );
 }
