@@ -16,3 +16,67 @@
   font-size: 0.9rem;
   margin: 0;
 }
+
+.playlistName {
+  position: relative;
+  border: none;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--clr-accent);
+  width: 100%;
+  margin-right: 1rem;
+}
+
+.playlistName::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+.playlistNameWrapper {
+  width: 100%;
+  position: relative;
+}
+
+.editIcon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-image: url(../../icon-edit.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 10rem;
+  top: -1px;
+  opacity: 0.6;
+}
+
+.playlistName:hover ~ .editIcon {
+  background-image: url(../../icon-edit-accent.svg);
+  animation: wiggle 300ms ease-in-out 3 alternate;
+}
+
+.playlistName:focus {
+  outline: none;
+  border-bottom: 1px solid var(--clr-accent);
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+  25% {
+    transform: rotate(-5deg) translateX(1px);
+  }
+  50% {
+    transform: rotate(0deg) translateX(2px);
+  }
+  75% {
+    transform: rotate(5deg) translateX(1px);
+  }
+  100% {
+    transform: rotate(0deg) translateX(0);
+  }
+}

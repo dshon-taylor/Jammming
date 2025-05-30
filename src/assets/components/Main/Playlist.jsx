@@ -1,15 +1,29 @@
-import React from 'react';
-import mockData from '../../mockData.json';
+import React, { useState } from 'react';
 import SongCard from './SongCard';
 import Button from './Button';
+import styles from './Playlist.module.css';
 
-
-function Playlist() {
+function Playlist({ playlist }) {
+    const [playlistName, setPlaylistName] = useState(null);
+    const [editing, setEditing] = useState(false);
+    
     return (
         <section id="playlist-container">
-            <h2>Your Pla<span className="clr-accent">yyy</span>list</h2>
+            <div className={styles.playlistNameWrapper}>
+                <input
+                    type="text"
+                    id="playListName"
+                    placeholder="My Playyylist"
+                    className={styles.playlistName}
+                    value={playlistName}
+                    onChange={e => setPlaylistName(e.target.value)}
+                    onFocus={() => setEditing(true)}
+                    onBlur={() => setEditing(false)}
+                />
+                {!playlistName && !editing ? <div className={styles.editIcon}></div> : null }
+            </div>
             <div id="playlist">
-                {mockData.map((song, index) => (
+                {playlist.map((song, index) => (
                     <SongCard
                         key={index}
                         title={song.songName}
