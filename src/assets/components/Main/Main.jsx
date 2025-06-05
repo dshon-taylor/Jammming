@@ -1,14 +1,13 @@
 import React from 'react';
 import TrackSelector from './TrackSelector';
 import Playlist from './Playlist';
-import mockData from '../../mockData.json';
 
-function Main() {
+function Main({ playlist, setPlaylist, songs }) {
     return (
         <main>
             <div className="wrapper">
-                <TrackSelector />
-                <Playlist playlist={mockData} />
+                <TrackSelector playlist={playlist} setPlaylist={setPlaylist} songs={songs} />
+                <Playlist playlist={playlist} setPlaylist={setPlaylist} />
             </div>
         </main>
     )

@@ -3,10 +3,16 @@ import SongCard from './SongCard';
 import Button from './Button';
 import styles from './Playlist.module.css';
 
-function Playlist({ playlist }) {
+function Playlist({ playlist, setPlaylist }) {
     const [playlistName, setPlaylistName] = useState(null);
     const [editing, setEditing] = useState(false);
     
+    function handleRemove(song) {
+        setPlaylist(playlist.filter(
+            s => !(s.songName === song.songName && s.fullName === song.fullName)
+        ));
+    }
+
     return (
         <section id="playlist-container">
             <div className={styles.playlistNameWrapper}>
@@ -19,6 +25,7 @@ function Playlist({ playlist }) {
                     onChange={e => setPlaylistName(e.target.value)}
                     onFocus={() => setEditing(true)}
                     onBlur={() => setEditing(false)}
+                    required
                 />
                 {!playlistName && !editing ? <div className={styles.editIcon}></div> : null }
             </div>
@@ -32,6 +39,7 @@ function Playlist({ playlist }) {
                         cover={song.urlPicsumPhotos}
                         addedToPlaylist={true}
                         playlistCard={true}
+                        onRemove={() => handleRemove(song)}
                     />
                 ))}
             </div>

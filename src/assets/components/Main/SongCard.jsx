@@ -1,20 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './SongCard.module.css';
 import playlistStyles from './Playlist.module.css';
 
-function SongCard({title, artist, album, cover, addedToPlaylist, playlistCard}) {
-    const [selected, setSelected] = useState(false);
+function SongCard({title, artist, album, cover, addedToPlaylist, playlistCard, onAdd, onRemove}) {
+
+    const buttonClass = playlistCard ? 'remove-from-playlist' : 'add-to-playlist';
+
     const handleClick = () => {
-        setSelected(!selected);
+        if (!playlistCard && !addedToPlaylist) {
+            onAdd();
+        } else if (addedToPlaylist) {
+            onRemove();
+        }
     };
-    const trackAdded = selected ? 'selected' : '';
-    const buttonClass = addedToPlaylist ? 'remove-from-playlist' : 'add-to-playlist';
+
+    const cardClassName = [
+        styles.songCard,
+        playlistCard ? playlistStyles.playlistCard : '',
+        !playlistCard && addedToPlaylist ? 'selected' : ''
+    ].join(' ');
+
     return (
-        <div className={`${styles.songCard} ${trackAdded} ${playlistCard ? playlistStyles.playlistCard : ''}`}>
+        <div className={cardClassName}>
             <img src={cover} title={`Album art for ${title} by ${artist}`} />
             <div className={styles.songInfo}>
                 <h3>{title}</h3>
-                <p>{artist} { addedToPlaylist ? '' : <span style={{opacity: .6}}>| {album}</span>}</p>
+                <p>{artist} { addedToPlaylist ? '' : <span className={styles.albumTitle}>| {album}</span>}</p>
             </div>
             <span className={buttonClass} onClick={handleClick}></span>
         </div>
