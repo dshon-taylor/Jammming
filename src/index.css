@@ -148,6 +148,7 @@ section {
   position: absolute;
   top: 0;
   right: 0;
+  left: auto;
   bottom: 0;
   width: 60px;
   height: 100%;
