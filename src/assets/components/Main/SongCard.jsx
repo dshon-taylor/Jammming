@@ -1,25 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './SongCard.module.css';
 import playlistStyles from './Playlist.module.css';
 
-function SongCard({title, artist, album, cover, addedToPlaylist, playlistCard, onAdd, onRemove}) {
+function SongCard({title, artist, album, cover, addedToPlaylist, playlistCard, onAdd, onRemove, removing, somethingRemoving}) {
 
-    const [removing, setRemoving] = useState(false);
-
-    const buttonClass = playlistCard ? `remove-from-playlist ${playlistCard && removing ? ' remove-animation' : ''}` : 'add-to-playlist';
+    const buttonClass = playlistCard ? `remove-from-playlist ${removing ? ' remove-animation' : ''}` : 'add-to-playlist';
 
     const handleClick = () => {
-        if (removing) return;
+        if (somethingRemoving) return; // Disable all removal if any card is removing
 
         if (!playlistCard && !addedToPlaylist) {
             onAdd();
         } else if (!playlistCard && addedToPlaylist) {
             onRemove();
-        } else if (addedToPlaylist) {
-            setRemoving(true);
-            setTimeout( () => {
-                onRemove()
-            }, 500);
+        } else if (playlistCard && addedToPlaylist) {
+            onRemove();
         }
     };
 
@@ -40,7 +35,7 @@ function SongCard({title, artist, album, cover, addedToPlaylist, playlistCard, o
             <span
                 className={buttonClass}
                 onClick={handleClick}
-                style={removing ? { pointerEvents: 'none' } : {}}
+                style={removing ? { pointerEvents: 'none', opacity: 0.5 } : {}}
             />
         </div>
     );

@@ -12,33 +12,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script>
-      const playlistSongs = document.getElementById("playlist").getElementsByClassName("song-card");
-      const songCards = document.getElementById("results").getElementsByClassName("song-card");
-      const removeButtons = document.getElementsByClassName("remove-from-playlist");
-      const addButtons = document.getElementsByClassName("add-to-playlist");
-
-      Array.from(addButtons).forEach((button) => {
-        button.addEventListener("click", (event) => {
-          // Prevent the click from bubbling up if needed
-          event.stopPropagation();
-          // Toggle class on the parent .song-card
-          button.parentElement.classList.toggle("selected");
-        });
-      });
-
-      Array.from(removeButtons).forEach((button) => {
-        button.addEventListener("click", (event) => {
-          // Prevent the click from bubbling up if needed
-          event.stopPropagation();
-          // Toggle class on the parent .song-card
-          button.classList.toggle("remove-animation");
-          button.parentElement.classList.toggle("remove-entry-animation");
-          setTimeout(() => {
-            button.parentElement.remove();
-          }, 500);
-        });
-      });
-    </script>
   </body>
 </html>

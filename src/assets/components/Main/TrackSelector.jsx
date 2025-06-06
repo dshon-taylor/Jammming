@@ -35,9 +35,9 @@ function TrackSelector({ songs, playlist, setPlaylist }) {
                 <SearchBar onSearch={handleSearch} searchValue={searchInput} />
             </div>
             <div id="results">
-                {filteredSongs.map((song, index) => (
+                {filteredSongs.map((song) => (
                     <SongCard
-                        key={index}
+                        key={song.id}
                         title={song.songName}
                         artist={song.fullName}
                         album={song.words}
