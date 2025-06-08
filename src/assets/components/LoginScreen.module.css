@@ -1,0 +1,36 @@
+.loginScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    align-content: center;
+    justify-content: center;
+}
+
+.loginScreen button {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 100vw;
+    background: white;
+    color: var(--clr-primary);
+    border: 1px solid var(--clr-accent);
+    font-weight: 400;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+}
+
+.loginScreen button:hover {
+    background: var(--clr-accent);
+    color: white;
+    box-shadow: 0 0 10px var(--clr-accent);
+}
+
+.loginScreen.success {
+    display: none;
+}
