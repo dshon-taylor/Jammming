@@ -46,10 +46,10 @@ function Playlist({ playlist, setPlaylist }) {
                 {playlist.map((song) => (
                     <SongCard
                         key={song.id}
-                        title={song.songName}
-                        artist={song.fullName}
-                        album={song.words}
-                        cover={song.urlPicsumPhotos}
+                        title={song.name}
+                        artist={song.artists.map(a => a.name).join(', ')}
+                        album={song.album.name}
+                        cover={song.album.images[0]?.url}
                         addedToPlaylist={true}
                         playlistCard={true}
                         onRemove={() => handleRemove(song)}

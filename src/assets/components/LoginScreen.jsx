@@ -6,7 +6,7 @@ import Header from './Header';
 // In your component:
 function LoginScreen () {
     return (
-        <div class={styles.loginScreen}>
+        <div className={styles.loginScreen}>
             <Header />
             <button onClick={redirectToSpotifyLogin}>Log in with Spotify</button>
         </div>

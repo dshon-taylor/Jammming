@@ -35,7 +35,7 @@ function App() {
       <Background />
       <div className={postLoginClass}>
         <Header />
-        <Main playlist={playlist} setPlaylist={setPlaylist} songs={mockData} />
+        <Main playlist={playlist} setPlaylist={setPlaylist} />
       </div>
     </>
   )

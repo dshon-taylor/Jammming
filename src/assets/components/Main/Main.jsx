@@ -6,7 +6,7 @@ function Main({ playlist, setPlaylist, songs }) {
     return (
         <main>
             <div className="wrapper">
-                <TrackSelector playlist={playlist} setPlaylist={setPlaylist} songs={songs} />
+                <TrackSelector playlist={playlist} setPlaylist={setPlaylist} />
                 <Playlist playlist={playlist} setPlaylist={setPlaylist} />
             </div>
         </main>
