@@ -7,7 +7,7 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem 4rem 1rem 1rem;
+  padding: 1rem 5.5rem 1rem 1rem;
   gap: 1rem;
   color: var(--clr-text-secondary);
   border-top: 1px solid var(--clr-primary);
@@ -35,4 +35,5 @@
   justify-items: start;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import SongCard from './SongCard';
 import Button from './Button';
 import styles from './Playlist.module.css';
+import { savePlaylistToSpotify } from "../utilities/spotifyPlaylist";
+
 
 function Playlist({ playlist, setPlaylist }) {
     const [playlistName, setPlaylistName] = useState(null);
@@ -22,8 +24,13 @@ function Playlist({ playlist, setPlaylist }) {
         }, 500);
     }
 
-    function savePlaylist() {
-        playlist
+    function handleSavePlaylist() {
+        savePlaylistToSpotify(playlist, playlistName)
+        .then(() => {
+            setPlaylist([]);
+            setPlaylistName('');
+            setEditing(false);
+        })
     }
 
     return (
@@ -38,7 +45,6 @@ function Playlist({ playlist, setPlaylist }) {
                     onChange={e => setPlaylistName(e.target.value)}
                     onFocus={() => setEditing(true)}
                     onBlur={() => setEditing(false)}
-                    required
                 />
                 {!playlistName && !editing ? <div className={styles.editIcon}></div> : null }
             </div>
@@ -47,7 +53,7 @@ function Playlist({ playlist, setPlaylist }) {
                     <SongCard
                         key={song.id}
                         title={song.name}
-                        artist={song.artists.map(a => a.name).join(', ')}
+                        artist={song.artists}
                         album={song.album.name}
                         cover={song.album.images[0]?.url}
                         addedToPlaylist={true}
@@ -58,7 +64,7 @@ function Playlist({ playlist, setPlaylist }) {
                     />
                 ))}
             </div>
-            <Button text="Addd to Spotify" />
+            <Button text="Addd to Spotify" onClick={handleSavePlaylist} />
         </section>
     );
 }

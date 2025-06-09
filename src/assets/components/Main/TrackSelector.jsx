@@ -3,9 +3,8 @@ import SongCard from './SongCard';
 import SearchBar from './SearchBar';
 import { redirectToSpotifyLogin } from '../SpotifyAccess';
 
-function TrackSelector({ playlist, setPlaylist }) {
+function TrackSelector({ playlist, setPlaylist, needsLogin, setNeedsLogin }) {
     const [results, setResults] = useState([]);
-    const [needsLogin, setNeedsLogin] = useState(false);
 
     // Fetch popular tracks on mount
     useEffect(() => {
@@ -48,15 +47,6 @@ function TrackSelector({ playlist, setPlaylist }) {
         ));
     }
 
-    if (needsLogin) {
-        return (
-            <div>
-                <p>Your Spotify session has expired.</p>
-                <button onClick={redirectToSpotifyLogin}>Log in with Spotify</button>
-            </div>
-        );
-    }
-
     return (
         <section id="songs-container">
             <div>
@@ -68,7 +58,7 @@ function TrackSelector({ playlist, setPlaylist }) {
                     <SongCard
                         key={song.id}
                         title={song.name}
-                        artist={song.artists.map(a => a.name).join(', ')}
+                        artist={song.artists}
                         album={song.album.name}
                         cover={song.album.images[0]?.url}
                         addedToPlaylist={playlist.some(s => s.id === song.id)}

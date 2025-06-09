@@ -278,6 +278,11 @@ section {
 }
 
 @keyframes removeSong {
+  0% {
+    right: 0;
+    left: auto;
+    width: 60px;
+  }
   100% {
     right: 0;
     left: auto;

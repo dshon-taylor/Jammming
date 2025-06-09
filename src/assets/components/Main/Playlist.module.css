@@ -17,6 +17,13 @@
   margin: 0;
 }
 
+.playlistCard > div {
+  padding-top: 4px;
+  padding-bottom: 3px;
+  overflow: hidden;
+
+}
+
 .playlistName {
   position: relative;
   border: none;

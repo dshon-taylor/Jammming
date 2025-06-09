@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './SongCard.module.css';
 import playlistStyles from './Playlist.module.css';
 
-function SongCard({title, artist, album, cover, addedToPlaylist, playlistCard, onAdd, onRemove, removing, somethingRemoving}) {
+function SongCard({ title, artist, album, cover, addedToPlaylist, playlistCard, onAdd, onRemove, removing, somethingRemoving }) {
+    const marqueeRef = useRef(null);
+    const containerRef = useRef(null);
 
     const buttonClass = playlistCard ? `remove-from-playlist ${removing ? ' remove-animation' : ''}` : 'add-to-playlist';
 
@@ -27,10 +29,10 @@ function SongCard({title, artist, album, cover, addedToPlaylist, playlistCard, o
 
     return (
         <div className={cardClassName}>
-            <img src={cover} title={`Album art for ${title} by ${artist}`} />
+            <img src={cover} title={`Album art for ${album} by ${artist[0].name}`} />
             <div className={styles.songInfo}>
                 <h3>{title}</h3>
-                <p>{artist} { !playlistCard ? <span className={styles.albumTitle}>| {album}</span>: ''}</p>
+                <p>{artist.map(a => a.name).join(', ')} { !playlistCard ? <span className={styles.albumTitle}>| {album}</span>: ''}</p>
             </div>
             <span
                 className={buttonClass}
