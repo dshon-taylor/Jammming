@@ -80,6 +80,7 @@ main {
   grid-template-columns: 2fr 1.2fr;
   gap: 2rem;
   align-items: stretch;
+  min-width: 0;
 }
 
 #songs-container {
@@ -90,9 +91,11 @@ main {
 
 #results, #playlist {
   width: 100%;
+  min-width: 0;
   height: 100%;
   padding-bottom: 3rem;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding-right: .75rem;
   mask-image: linear-gradient(to bottom, #000, #000 calc(100% - 4rem), transparent);
 }
@@ -124,6 +127,7 @@ section {
   padding: 1.5rem;
   backdrop-filter: blur(8px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+  min-width: 0;
 }
 
 .add-to-playlist::before,

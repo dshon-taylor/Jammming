@@ -23,17 +23,51 @@
 }
 
 .songCard img {
+  flex: 0 0 auto;
   width: 80px;
   height: 80px;
   border-radius: 4px;
   object-fit: cover;
 }
 
-.songCard .songInfo {
+.songInfo {
+  flex: 1 1 0;
   display: grid;
   align-content: center;
   justify-items: start;
   height: 100%;
   width: 100%;
   overflow: hidden;
+}
+
+h3, p {
+  animation: none;
+  cursor: default;
+}
+
+.songCard:hover :is(h3, p).animate {
+  animation-name: marquee-scroll;
+  animation-delay: 200ms;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  70% {
+    transform: translateX(var(--animation-distance));
+  }
+
+  80% {
+    transform: translateX(var(--animation-distance));
+  }
+  
+  90% {
+    transform: translateX(0);
+  }
 }
