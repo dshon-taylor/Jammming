@@ -1,0 +1,81 @@
+.cloneButton {
+    color: var(--clr-accent);
+    margin-bottom: .5rem;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-size: .75rem;
+    cursor: pointer;
+}
+
+.cloneButton:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.cloneModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.cloneForm {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 420px;
+    max-width: 90%;
+    color: #000;
+}
+
+.cloneForm h3 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 700;
+    color: inherit;
+    text-transform: uppercase;
+}
+
+.cloneForm p {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    color: inherit;
+}
+
+.cloneForm input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: .875rem;
+}
+
+.cloneForm Button {
+    box-sizing: border-box;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: .875rem;
+    background: lightgray;
+}
+
+.cloneForm Button:hover {
+    background: rgb(193, 57, 57);
+    color: white;
+}
+
+.cloneForm Button[type="submit"] {
+    background: var(--clr-accent);
+    color: white;
+    font-weight: 400;
+}
+
+.cloneForm Button[type="submit"]:hover {
+    background: #21b6b9;
+}
