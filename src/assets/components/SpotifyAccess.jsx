@@ -17,7 +17,7 @@ export const generateCodeChallenge = async (codeVerifier) => {
 
 export const redirectToSpotifyLogin = async () => {
   const clientId = '583bec5786e446279886c202aab00941';
-  const redirectUri = 'http://127.0.0.1:5173/';
+  const redirectUri = `${window.location.origin}/`;
   const scope = 'user-read-private user-read-email user-read-playback-state user-modify-playback-state user-read-currently-playing playlist-modify-public';
 
   const codeVerifier = generateRandomString(64);
@@ -39,7 +39,7 @@ export const redirectToSpotifyLogin = async () => {
 
 export const getToken = async (code) => {
   const clientId = '583bec5786e446279886c202aab00941';
-  const redirectUri = 'http://127.0.0.1:5173/';
+  const redirectUri = `${window.location.origin}/`;
   const codeVerifier = localStorage.getItem('code_verifier');
 
   const body = new URLSearchParams({
